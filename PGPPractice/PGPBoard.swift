@@ -114,9 +114,9 @@ struct HighHandRank: Comparable {
     var kickers: [Card] = []
     
     static func < (lhs: HighHandRank, rhs: HighHandRank) -> Bool {
-        if lhs.bonus.rawValue < rhs .bonus.rawValue {
+        if lhs.bonus.caseIndex() < rhs.bonus.caseIndex() {
             return true
-        } else if lhs.bonus.rawValue > rhs .bonus.rawValue {
+        } else if lhs.bonus.caseIndex() > rhs.bonus.caseIndex() {
             return false
         }
         
