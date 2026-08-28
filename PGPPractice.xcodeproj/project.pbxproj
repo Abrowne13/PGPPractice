@@ -6,6 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		73B87AD02E94927300F71D5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B87AC92E94927300F71D5C /* Preview Assets.xcassets */; };
+		73B87AD12E94927300F71D5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73B87ACB2E94927300F71D5C /* Assets.xcassets */; };
+		73B87AD22E94927300F71D5C /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87ACC2E94927300F71D5C /* RoundView.swift */; };
+		73B87AD32E94927300F71D5C /* PGPPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87ACE2E94927300F71D5C /* PGPPracticeApp.swift */; };
+		73B87AD62E94928900F71D5C /* PGPPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AD42E94928900F71D5C /* PGPPracticeTests.swift */; };
+		73B87ADA2E94928C00F71D5C /* PGPPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AD72E94928C00F71D5C /* PGPPracticeUITests.swift */; };
+		73B87ADB2E94928C00F71D5C /* PGPPracticeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AD82E94928C00F71D5C /* PGPPracticeUITestsLaunchTests.swift */; };
+		73B87ADD2E94937A00F71D5C /* CardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87ADC2E94937A00F71D5C /* CardTableView.swift */; };
+		73B87AE02E94941300F71D5C /* CardTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87ADF2E94941300F71D5C /* CardTableViewModel.swift */; };
+		73B87AE22E94956800F71D5C /* CardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AE12E94956800F71D5C /* CardImage.swift */; };
+		73B87AEA2E9495D500F71D5C /* BoardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AE92E9495D500F71D5C /* BoardBuilder.swift */; };
+		73B87AEC2E94962100F71D5C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AEB2E94962100F71D5C /* Card.swift */; };
+		73B87AEE2E94966300F71D5C /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AED2E94966300F71D5C /* Deck.swift */; };
+		73B87AF02E9496B600F71D5C /* ClosedRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AEF2E9496B600F71D5C /* ClosedRange.swift */; };
+		73B87AF22E94970600F71D5C /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B87AF12E94970600F71D5C /* Dictionary.swift */; };
+		73ED7827303B8A1100BB1333 /* CSACardTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED7826303B8A1100BB1333 /* CSACardTableView.swift */; };
+		73ED7829303B8A4E00BB1333 /* CSACardTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED7828303B8A4E00BB1333 /* CSACardTableViewModel.swift */; };
+		73ED782B303BCC9400BB1333 /* CardTableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED782A303BCC9400BB1333 /* CardTableList.swift */; };
+		73ED782D303BD00300BB1333 /* CardTableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED782C303BCFEC00BB1333 /* CardTableListViewModel.swift */; };
+		73ED782F303E5F8600BB1333 /* CaseIterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73ED782E303E5F8600BB1333 /* CaseIterable.swift */; };
+		73FA242E2F7BADCD003F0D8F /* PGPBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73FA242D2F7BADCD003F0D8F /* PGPBoard.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		73B87AAD2E94925E00F71D5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,25 +51,29 @@
 		73B87A9B2E94924E00F71D5C /* PGPPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PGPPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B87AAC2E94925E00F71D5C /* PGPPracticeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PGPPracticeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B87AB62E94925E00F71D5C /* PGPPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PGPPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		73B87AC92E94927300F71D5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		73B87ACB2E94927300F71D5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		73B87ACC2E94927300F71D5C /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		73B87ACD2E94927300F71D5C /* PGPPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PGPPractice.entitlements; sourceTree = "<group>"; };
+		73B87ACE2E94927300F71D5C /* PGPPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPPracticeApp.swift; sourceTree = "<group>"; };
+		73B87AD42E94928900F71D5C /* PGPPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPPracticeTests.swift; sourceTree = "<group>"; };
+		73B87AD72E94928C00F71D5C /* PGPPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPPracticeUITests.swift; sourceTree = "<group>"; };
+		73B87AD82E94928C00F71D5C /* PGPPracticeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPPracticeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		73B87ADC2E94937A00F71D5C /* CardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableView.swift; sourceTree = "<group>"; };
+		73B87ADF2E94941300F71D5C /* CardTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableViewModel.swift; sourceTree = "<group>"; };
+		73B87AE12E94956800F71D5C /* CardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImage.swift; sourceTree = "<group>"; };
+		73B87AE92E9495D500F71D5C /* BoardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardBuilder.swift; sourceTree = "<group>"; };
+		73B87AEB2E94962100F71D5C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		73B87AED2E94966300F71D5C /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		73B87AEF2E9496B600F71D5C /* ClosedRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosedRange.swift; sourceTree = "<group>"; };
+		73B87AF12E94970600F71D5C /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		73ED7826303B8A1100BB1333 /* CSACardTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSACardTableView.swift; sourceTree = "<group>"; };
+		73ED7828303B8A4E00BB1333 /* CSACardTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSACardTableViewModel.swift; sourceTree = "<group>"; };
+		73ED782A303BCC9400BB1333 /* CardTableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableList.swift; sourceTree = "<group>"; };
+		73ED782C303BCFEC00BB1333 /* CardTableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableListViewModel.swift; sourceTree = "<group>"; };
+		73ED782E303E5F8600BB1333 /* CaseIterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseIterable.swift; sourceTree = "<group>"; };
+		73FA242D2F7BADCD003F0D8F /* PGPBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		73B87A9D2E94924E00F71D5C /* PGPPractice */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PGPPractice;
-			sourceTree = "<group>";
-		};
-		73B87AAF2E94925E00F71D5C /* PGPPracticeTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PGPPracticeTests;
-			sourceTree = "<group>";
-		};
-		73B87AB92E94925E00F71D5C /* PGPPracticeUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PGPPracticeUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		73B87A982E94924E00F71D5C /* Frameworks */ = {
@@ -75,9 +103,10 @@
 		73B87A922E94924E00F71D5C = {
 			isa = PBXGroup;
 			children = (
-				73B87A9D2E94924E00F71D5C /* PGPPractice */,
-				73B87AAF2E94925E00F71D5C /* PGPPracticeTests */,
-				73B87AB92E94925E00F71D5C /* PGPPracticeUITests */,
+				73B87ACF2E94927300F71D5C /* PGPPractice */,
+				73B87ACA2E94927300F71D5C /* Preview Content */,
+				73B87AD52E94928900F71D5C /* PGPPracticeTests */,
+				73B87AD92E94928C00F71D5C /* PGPPracticeUITests */,
 				73B87A9C2E94924E00F71D5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +119,80 @@
 				73B87AB62E94925E00F71D5C /* PGPPracticeUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		73B87ACA2E94927300F71D5C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				73B87AC92E94927300F71D5C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		73B87ACF2E94927300F71D5C /* PGPPractice */ = {
+			isa = PBXGroup;
+			children = (
+				73B87ACE2E94927300F71D5C /* PGPPracticeApp.swift */,
+				73B87ADE2E94939600F71D5C /* Views */,
+				73FA242F2F7C7D44003F0D8F /* ViewModels */,
+				73B87AE12E94956800F71D5C /* CardImage.swift */,
+				73B87AE92E9495D500F71D5C /* BoardBuilder.swift */,
+				73FA242D2F7BADCD003F0D8F /* PGPBoard.swift */,
+				73B87AEB2E94962100F71D5C /* Card.swift */,
+				73B87AED2E94966300F71D5C /* Deck.swift */,
+				73B87AF32E94971B00F71D5C /* Extensions */,
+				73B87ACB2E94927300F71D5C /* Assets.xcassets */,
+				73B87ACD2E94927300F71D5C /* PGPPractice.entitlements */,
+			);
+			path = PGPPractice;
+			sourceTree = "<group>";
+		};
+		73B87AD52E94928900F71D5C /* PGPPracticeTests */ = {
+			isa = PBXGroup;
+			children = (
+				73B87AD42E94928900F71D5C /* PGPPracticeTests.swift */,
+			);
+			path = PGPPracticeTests;
+			sourceTree = "<group>";
+		};
+		73B87AD92E94928C00F71D5C /* PGPPracticeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				73B87AD72E94928C00F71D5C /* PGPPracticeUITests.swift */,
+				73B87AD82E94928C00F71D5C /* PGPPracticeUITestsLaunchTests.swift */,
+			);
+			path = PGPPracticeUITests;
+			sourceTree = "<group>";
+		};
+		73B87ADE2E94939600F71D5C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				73ED782A303BCC9400BB1333 /* CardTableList.swift */,
+				73B87ACC2E94927300F71D5C /* RoundView.swift */,
+				73B87ADC2E94937A00F71D5C /* CardTableView.swift */,
+				73ED7826303B8A1100BB1333 /* CSACardTableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73B87AF32E94971B00F71D5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				73B87AEF2E9496B600F71D5C /* ClosedRange.swift */,
+				73B87AF12E94970600F71D5C /* Dictionary.swift */,
+				73ED782E303E5F8600BB1333 /* CaseIterable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		73FA242F2F7C7D44003F0D8F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				73ED782C303BCFEC00BB1333 /* CardTableListViewModel.swift */,
+				73B87ADF2E94941300F71D5C /* CardTableViewModel.swift */,
+				73ED7828303B8A4E00BB1333 /* CSACardTableViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,9 +209,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				73B87A9D2E94924E00F71D5C /* PGPPractice */,
 			);
 			name = PGPPractice;
 			packageProductDependencies = (
@@ -130,9 +230,6 @@
 			dependencies = (
 				73B87AAE2E94925E00F71D5C /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				73B87AAF2E94925E00F71D5C /* PGPPracticeTests */,
-			);
 			name = PGPPracticeTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +249,6 @@
 			);
 			dependencies = (
 				73B87AB82E94925E00F71D5C /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				73B87AB92E94925E00F71D5C /* PGPPracticeUITests */,
 			);
 			name = PGPPracticeUITests;
 			packageProductDependencies = (
@@ -212,6 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B87AD02E94927300F71D5C /* Preview Assets.xcassets in Resources */,
+				73B87AD12E94927300F71D5C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +332,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B87ADD2E94937A00F71D5C /* CardTableView.swift in Sources */,
+				73ED782F303E5F8600BB1333 /* CaseIterable.swift in Sources */,
+				73B87AE22E94956800F71D5C /* CardImage.swift in Sources */,
+				73B87AEC2E94962100F71D5C /* Card.swift in Sources */,
+				73ED7829303B8A4E00BB1333 /* CSACardTableViewModel.swift in Sources */,
+				73ED7827303B8A1100BB1333 /* CSACardTableView.swift in Sources */,
+				73B87AE02E94941300F71D5C /* CardTableViewModel.swift in Sources */,
+				73ED782B303BCC9400BB1333 /* CardTableList.swift in Sources */,
+				73FA242E2F7BADCD003F0D8F /* PGPBoard.swift in Sources */,
+				73B87AEE2E94966300F71D5C /* Deck.swift in Sources */,
+				73B87AF22E94970600F71D5C /* Dictionary.swift in Sources */,
+				73ED782D303BD00300BB1333 /* CardTableListViewModel.swift in Sources */,
+				73B87AD22E94927300F71D5C /* RoundView.swift in Sources */,
+				73B87AEA2E9495D500F71D5C /* BoardBuilder.swift in Sources */,
+				73B87AF02E9496B600F71D5C /* ClosedRange.swift in Sources */,
+				73B87AD32E94927300F71D5C /* PGPPracticeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B87AD62E94928900F71D5C /* PGPPracticeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73B87ADA2E94928C00F71D5C /* PGPPracticeUITests.swift in Sources */,
+				73B87ADB2E94928C00F71D5C /* PGPPracticeUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +436,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -376,6 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -391,7 +508,6 @@
 				CODE_SIGN_ENTITLEMENTS = PGPPractice/PGPPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PGPPractice/Preview Content\"";
 				DEVELOPMENT_TEAM = 253Q6WGJC2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -404,9 +520,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
@@ -414,10 +530,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Pent.PGPPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -430,7 +547,6 @@
 				CODE_SIGN_ENTITLEMENTS = PGPPractice/PGPPractice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PGPPractice/Preview Content\"";
 				DEVELOPMENT_TEAM = 253Q6WGJC2;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -443,9 +559,9 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.7;
@@ -453,10 +569,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Pent.PGPPractice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;

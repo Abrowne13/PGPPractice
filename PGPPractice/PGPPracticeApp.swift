@@ -11,7 +11,7 @@ import SwiftUI
 struct PGPPracticeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CardTableList()
         }
     }
 }
