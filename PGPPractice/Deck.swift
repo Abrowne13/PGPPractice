@@ -19,7 +19,6 @@ class Deck {
                 allCards.append(Card(rank: rank, suit: suit))
             }
         }
-        //!! Removing this until CSA implementation
         if isCSADeck {
             allCards.append(Card(rank: .joker, suit: .any))
         }

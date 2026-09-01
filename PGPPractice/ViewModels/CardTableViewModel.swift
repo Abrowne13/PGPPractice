@@ -89,68 +89,44 @@ class CardTableViewModel: ObservableObject {
         
         
 
-//        let board = PGPBoard()
-//        
-//        let cards = [Card(rank: .ace, suit: .spades),
-//                     Card(rank: .ten, suit: .spades),
-//                     Card(rank: .eight, suit: .clubs),
-//                     Card(rank: .jack, suit: .spades),
-//                     Card(rank: .seven, suit: .spades),
-//                     Card(rank: .queen, suit: .spades),
-//                     Card(rank: .king, suit: .spades)]
-//        
-//        let answer = board.getHandFromCards(cards: cards)
-//        var cardsText = "Cards: "
-//        for card in cards {
-//            cardsText.append("\(card.description()) ")
-//        }
-//
-//        print(cardsText)
-//        
-//        print("Straight: ")
-//        let hasJoker = cards.contains(where: { $0.rank == .joker })
-//        if let hand = board.getStraightHand(cards: cards, hasJoker: hasJoker) {
-//            print(hand.description())
-//        } else {
-//            print("No straights")
-//        }
-//        
-//        print("Flushes: ")
-//        if let hand = board.getFlushHand(cards: cards, pairs: []) {
-//            print(hand.description())
-//        } else {
-//            print("No flushes")
-//        }
-//        
-//        print("Answer: ")
-//        print(answer.description())
-//        
-//        print("Bonus: ")
-//        print(board.getBonusForCards(cards: cards))
+        let board = PGPBoard()
+        
+        let cards = [Card(rank: .eight, suit: .hearts),
+                     Card(rank: .queen, suit: .hearts),
+                     Card(rank: .three, suit: .spades),
+                     Card(rank: .queen, suit: .diamonds),
+                     Card(rank: .nine, suit: .hearts),
+                     Card(rank: .eight, suit: .clubs),
+                     Card(rank: .joker, suit: .any)]
+        
+        let answer = board.getHandFromCards(cards: cards)
+        var cardsText = "Cards: "
+        for card in cards {
+            cardsText.append("\(card.description()) ")
+        }
 
+        print(cardsText)
         
-        let dealerCards = [Card(rank: .ace, suit: .clubs),
-                           Card(rank: .three, suit: .hearts),
-                          Card(rank: .ten, suit: .spades),
-                           Card(rank: .four, suit: .clubs),
-                           Card(rank: .nine, suit: .hearts),
-                          Card(rank: .six, suit: .spades),
-                           Card(rank: .eight, suit: .clubs)]
+        print("Straight: ")
+        let hasJoker = cards.contains(where: { $0.rank == .joker })
+        if let hand = board.getStraightHand(cards: cards, hasJoker: hasJoker) {
+            print(hand.description())
+        } else {
+            print("No straights")
+        }
         
-        let playerCards = [Card(rank: .eight, suit: .spades),
-                          Card(rank: .eight, suit: .diamonds),
-                          Card(rank: .ten, suit: .clubs),
-                          Card(rank: .jack, suit: .spades),
-                          Card(rank: .queen, suit: .spades),
-                          Card(rank: .queen, suit: .hearts),
-                          Card(rank: .ace, suit: .hearts)]
+        print("Flushes: ")
+        if let hand = board.getFlushHand(cards: cards, pairs: []) {
+            print(hand.description())
+        } else {
+            print("No flushes")
+        }
         
-        let dealerHand = board.getHandFromCards(cards: dealerCards)
-        let playerHand = board.getHandFromCards(cards: playerCards)
+        print("Answer: ")
+        print(answer.description())
         
-        let outcome = board.getHandComparison(dealerHand: dealerHand, playerHand: playerHand)
-        
-        print("Outcome: \(outcome)")
+        print("Bonus: ")
+        print(board.getBonusForCards(cards: cards))
     }
     
     func answer() {

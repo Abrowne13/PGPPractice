@@ -433,22 +433,39 @@ class PGPBoard {
                 // Set the high pair to the low
                 hand.low.append(highPair[0])
                 hand.low.append(highPair[1])
-                hand.high = cards.filter({!hand.low.contains($0)}).sorted(by: >)
+                if hasJoker {
+                    hand.high = cards.filter({$0.rank == pairs[1]})
+                    hand.high.append(cards.first(where: {$0.rank == .joker})!)
+                    hand.high.append(contentsOf: cards.filter({$0.rank != pairs[1] && !hand.low.contains($0) && $0.rank != .joker}).sorted(by: >))
+                } else {
+                    hand.high = cards.filter({$0.rank == pairs[1]})
+                    hand.high.append(contentsOf: cards.filter({$0.rank == pairs[2]}))
+                    hand.high.append(contentsOf: cards.filter({$0.rank != pairs[1] && $0.rank != pairs[2] && !hand.low.contains($0)}).sorted(by: >))
+                }
                 return hand
                 // Two pairs
             } else if pairs.count > 1 {
                 if hasJoker {
                     let sortedCards = cards.sorted(by: >)
                     let highCard = sortedCards[1]
+                    //Play the natural high pair on top
                     if pairs.contains(highCard.rank) {
                         hand.low.append(highCard)
                         hand.low.append(cards.first(where: {$0.rank == highCard.rank && $0.suit != highCard.suit})!)
+                        // Here we want high hand to be the low pair, joker, remaining cards
+                        hand.high = cards.filter({$0.rank == pairs[1]})
+                        hand.high.append(contentsOf: cards.filter({$0.rank != pairs[1] && !hand.low.contains($0)}).sorted(by: >))
+                        return hand
+                    //Play highest card with joker on top
                     } else {
                         hand.low.append(highCard)
                         hand.low.append(cards.first(where: { $0.rank == .joker})!)
+                        // Here we want the high hand to be two pairs then the remaining cards
+                        hand.high = cards.filter({$0.rank == pairs[0]})
+                        hand.high.append(contentsOf: cards.filter({$0.rank == pairs[1]}))
+                        hand.high.append(contentsOf: cards.filter({$0.rank != pairs[0] && $0.rank != pairs[1] && !hand.low.contains($0)}))
+                        return hand
                     }
-                    hand.high = cards.filter({!hand.low.contains($0)}).sorted(by: >)
-                    return hand
                 } else {
                     if highRank >= CardRank.queen {
                         // Set the low pair to the low
@@ -465,7 +482,10 @@ class PGPBoard {
                                 !pairs.contains($0.rank)}) {
                                 hand.low.append(qualCard)
                                 hand.low.append(secondCard)
-                                hand.high = cards.filter({!hand.low.contains($0)}).sorted(by: >)
+                                var cardPairs = cards.filter({$0.rank == pairs[0]})
+                                cardPairs.append(contentsOf: cards.filter({$0.rank == pairs[1]}))
+                                hand.high = cardPairs
+                                hand.high.append(contentsOf: cards.filter({!cardPairs.contains($0) && !hand.low.contains($0)}))
                             } else {
                                 print("Could not find second card in two pair")
                             }
@@ -477,7 +497,8 @@ class PGPBoard {
                             let lowPair = sortedCards.filter({$0.rank == lowRank})
                             hand.low.append(lowPair[0])
                             hand.low.append(lowPair[1])
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank == pairs[0]}))
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank != pairs[0] && !hand.low.contains($0)}))
                             return hand
                         }
                     } else if highRank >= CardRank.six {
@@ -487,7 +508,10 @@ class PGPBoard {
                                 !pairs.contains($0.rank)}) {
                                 hand.low.append(qualCard)
                                 hand.low.append(secondCard)
-                                hand.high = sortedCards.filter({!hand.low.contains($0)})
+                                var cardPairs = cards.filter({$0.rank == pairs[0]})
+                                cardPairs.append(contentsOf: cards.filter({$0.rank == pairs[1]}))
+                                hand.high = cardPairs
+                                hand.high.append(contentsOf: cards.filter({!cardPairs.contains($0) && !hand.low.contains($0)}))
                             } else {
                                 print("Could not find second card in two pair")
                             }
@@ -499,7 +523,8 @@ class PGPBoard {
                             let lowPair = sortedCards.filter({$0.rank == lowRank})
                             hand.low.append(lowPair[0])
                             hand.low.append(lowPair[1])
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank == pairs[0]}))
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank != pairs[0] && !hand.low.contains($0)}))
                             return hand
                         }
                     } else {
@@ -509,7 +534,10 @@ class PGPBoard {
                                 !pairs.contains($0.rank)}) {
                                 hand.low.append(qualCard)
                                 hand.low.append(secondCard)
-                                hand.high = sortedCards.filter({!hand.low.contains($0)})
+                                var cardPairs = cards.filter({$0.rank == pairs[0]})
+                                cardPairs.append(contentsOf: cards.filter({$0.rank == pairs[1]}))
+                                hand.high = cardPairs
+                                hand.high.append(contentsOf: cards.filter({!cardPairs.contains($0) && !hand.low.contains($0)}))
                             } else {
                                 print("Could not find second card in two pair")
                             }
@@ -521,7 +549,8 @@ class PGPBoard {
                             let lowPair = sortedCards.filter({$0.rank == lowRank})
                             hand.low.append(lowPair[0])
                             hand.low.append(lowPair[1])
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank == pairs[0]}))
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank != pairs[0] && !hand.low.contains($0)}))
                             return hand
                         }
                     }
@@ -535,11 +564,16 @@ class PGPBoard {
                             let pairs = cards.filter({$0.rank == pairs.first!})
                             hand.low.append(pairs[0])
                             hand.low.append(pairs[1])
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            //!! This needs to be high card, joker, remaing cards
+                            hand.high.append(sortedCards.first(where: {$0.rank != .joker})!)
+                            hand.high.append(sortedCards.first(where: {$0.rank == .joker})!)
+                            let remainingCards = sortedCards[2...6].filter({!hand.low.contains($0)})
+                            hand.high.append(contentsOf: remainingCards)
                         } else {
                             hand.low.append(firstCard)
                             hand.low.append(secondCard)
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            hand.high = sortedCards.filter({$0.rank == pairs[0]})
+                            hand.high.append(contentsOf: sortedCards.filter({$0.rank != pairs[0] && !hand.low.contains($0)}))
                         }
                     }
                 }

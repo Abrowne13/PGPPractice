@@ -128,9 +128,7 @@ class CSACardTableViewModel: ObservableObject {
             } else {
                 highRankString = "\(highHandRank.bonus)"
             }
-            
-            //!! Should the player low hand rank and the player high hand rank (call the highHand ranking function)
-            print("low: \(lowRankString)\nhigh: \(highRankString)\nevaluation: \(evaluation)\npayoutRatio: \(payout)")
+
             if payout > 0 {
                 answerText = "low: \(lowRankString)\nhigh: \(highRankString)\nevaluation: \(evaluation)\npayoutRatio: \(payout)"
             } else {

@@ -31,7 +31,6 @@ class BoardBuilder {
         
         //If this is false, the joker is already in the cards
         let joker = Card(rank: .joker, suit: .any)
-        //!! Non CSA Implementation
         cards.replaceSubrange(index...index, with: [joker])
         
         
