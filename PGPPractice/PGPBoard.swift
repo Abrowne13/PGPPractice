@@ -245,14 +245,14 @@ class PGPBoard {
                     if pairRank > quadRank {
                         let lowCards = cards.filter({$0.rank == pairRank})
                         hand.low = lowCards
-                        let highCards = cards.filter({!hand.low.contains($0)})
-                        hand.high = highCards
+                        hand.high = cards.filter({$0.rank == quadRank})
+                        hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                         return hand
                     } else {
                         let quadCards = cards.filter({$0.rank == quadRank})
                         hand.low.append(quadCards[0])
                         hand.low.append(quadCards[1])
-                        let highCards = cards.filter({!hand.low.contains($0)})
+                        let highCards = cards.filter({!hand.low.contains($0)}).sorted(by: >)
                         hand.high = highCards
                         return hand
                     }
@@ -297,7 +297,8 @@ class PGPBoard {
             } else if pairs.count > 1 { // If there is pair and quads
                 let lowRank = pairs.first(where: {$0 != quadRank})
                 hand.low = cards.filter({$0.rank == lowRank})
-                hand.high = cards.filter({$0.rank != lowRank})
+                hand.high = cards.filter({$0.rank == quadRank})
+                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                 return hand
             } else if quadRank >= CardRank.queen { // If A, K, Q
                 // (A,Q,K are never played as quads unless there was already a pair)
@@ -305,7 +306,8 @@ class PGPBoard {
                 let quadCards = cards.filter({$0.rank == quadRank})
                 hand.low.append(quadCards[0])
                 hand.low.append(quadCards[1])
-                hand.high = cards.filter({!hand.low.contains($0)})
+                hand.high = [quadCards[2], quadCards[3]]
+                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                 return hand
             } else if quadRank >= CardRank.nine && quadRank < CardRank.queen { // If J, 10, 9
                 let nonQuads = cards.filter({$0.rank != quadRank}).sorted(by: >)
@@ -319,13 +321,15 @@ class PGPBoard {
                         print("failed to get low card in quad \(quadRank)")
                         
                     }
-                    hand.high = cards.filter({!hand.low.contains($0)})
+                    hand.high = cards.filter({$0.rank == quadRank})
+                    hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                     return hand
                 } else { // Set the cards pair/pair
                     let quadCards = cards.filter({$0.rank == quadRank})
                     hand.low.append(quadCards[0])
                     hand.low.append(quadCards[1])
-                    hand.high = cards.filter({!hand.low.contains($0)})
+                    hand.high = [quadCards[2], quadCards[3]]
+                    hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                     return hand
                 }
             } else if quadRank >= CardRank.six && quadRank < CardRank.nine  { // If 8, 7, 6
@@ -339,13 +343,15 @@ class PGPBoard {
                     } else {
                         print("failed to get low card in quad \(quadRank)")
                     }
-                    hand.high = cards.filter({!hand.low.contains($0)})
+                    hand.high = cards.filter({$0.rank == quadRank})
+                    hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                     return hand
                 } else { // Set the cards pair/pair
                     let quadCards = cards.filter({$0.rank == quadRank})
                     hand.low.append(quadCards[0])
                     hand.low.append(quadCards[1])
-                    hand.high = cards.filter({!hand.low.contains($0)})
+                    hand.high = [quadCards[2], quadCards[3]]
+                    hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                     return hand
                 }
             } else { // Set the cards quad behind
@@ -353,14 +359,14 @@ class PGPBoard {
                 let nonQuads = cards.filter({$0.rank != quadRank}).sorted(by: >)
                 hand.low.append(nonQuads[0])
                 hand.low.append(nonQuads[1])
-                hand.high = cards.filter({!hand.low.contains($0)})
+                hand.high = cards.filter({$0.rank == quadRank})
+                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != quadRank}).sorted(by: >))
                 return hand
             }
         }
         return hand
     }
     
-    //!! Pairs are done, fix the trips, also the bug from the screenshot
     fileprivate func setTripsHand(_ trips: inout [CardRank], _ cards: [Card], _ hand: inout PGPHand, _ pairs: inout [CardRank], hasJoker: Bool) -> PGPHand {
         if trips.count == 2 {
             //Break the highest trips and play them at the top
@@ -387,15 +393,16 @@ class PGPBoard {
                 var bigPairs: [Card] = []
                 // Find the highest rank pair and play it at the top
                 var rankedPairs = pairs.sorted(by: >)
-                rankedPairs.removeAll(where:{ $0 == trips.first!})
+                rankedPairs.removeAll(where: {$0 == trips.first!})
                 bigPairs = cards.filter({$0.rank == rankedPairs[0]})
                 hand.low.append(bigPairs[0])
                 hand.low.append(bigPairs[1])
-                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0)}).sorted(by: >))
+                hand.high = cards.filter({$0.rank == trips[0]})
+                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != trips[0]}).sorted(by: >))
                 return hand
                 //Full house
             } else if pairs.count > 1 {
-                let singlePairRank = pairs.first(where:{$0 != trips[0]})
+                let singlePairRank = pairs.first(where: {$0 != trips[0]})
                 let singlePairs = cards.filter({$0.rank == singlePairRank})
                 if hasJoker {
                     if let soloCard = cards.first(where: {!pairs.contains($0.rank) && $0.rank != .joker}) {
@@ -413,7 +420,8 @@ class PGPBoard {
                     hand.low.append(singlePairs[0])
                     hand.low.append(singlePairs[1])
                 }
-                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0)}).sorted(by: >))
+                hand.high = cards.filter({$0.rank == trips[0]})
+                hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != trips[0]}).sorted(by: >))
                 return hand
             } else {
                 // If Aces split and play with the highest non trip on top
@@ -429,10 +437,8 @@ class PGPBoard {
                     let remains = cards.filter({!tripCards.contains($0)}).sorted(by: >)
                     hand.low.append(remains[0])
                     hand.low.append(remains[1])
-                    var highHand = tripCards
-                    let finalRemains = remains.filter({!hand.low.contains($0)})
-                    highHand.append(contentsOf: finalRemains)
-                    hand.high = highHand
+                    hand.high = tripCards
+                    hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != trips[0]}).sorted(by: >))
                 }
                 
                 var hands: [PGPHand] = []
