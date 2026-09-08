@@ -103,9 +103,33 @@ struct PGPHand {
     }
 }
 
-struct LowHandRank {
+struct LowHandRank: Comparable {
     var pairRank: CardRank?
     var ranks: [CardRank] = []
+    
+    static func < (lhs: LowHandRank, rhs: LowHandRank) -> Bool {
+        
+        if lhs.pairRank != nil && rhs.pairRank == nil {
+            return false
+        } else if lhs.pairRank == nil && rhs.pairRank != nil {
+            return true
+        } else if lhs.pairRank != nil && rhs.pairRank != nil {
+            if lhs.pairRank! < rhs.pairRank! {
+                return true
+            } else if lhs.pairRank! > rhs.pairRank! {
+                return false
+            }
+        }
+        
+        for i in 0...lhs.ranks.count - 1 {
+            if lhs.ranks[i] > rhs.ranks[i] {
+                return false
+            } else if lhs.ranks[i] < rhs.ranks[i] {
+                return true
+            }
+        }
+        return true
+    }
 }
 
 struct HighHandRank: Comparable {
@@ -126,8 +150,10 @@ struct HighHandRank: Comparable {
             return false
         } else {
             for i in 0...lhs.kickers.count - 1 {
-                if rhs.kickers[i] > lhs.kickers[i] {
+                if lhs.kickers[i].rank > rhs.kickers[i].rank {
                     return false
+                } else if lhs.kickers[i].rank < rhs.kickers[i].rank {
+                    return true
                 }
             }
             return true
@@ -334,6 +360,7 @@ class PGPBoard {
         return hand
     }
     
+    //!! Pairs are done, fix the trips, also the bug from the screenshot
     fileprivate func setTripsHand(_ trips: inout [CardRank], _ cards: [Card], _ hand: inout PGPHand, _ pairs: inout [CardRank], hasJoker: Bool) -> PGPHand {
         if trips.count == 2 {
             //Break the highest trips and play them at the top
@@ -958,25 +985,16 @@ class PGPBoard {
     func getHandComparison(dealerHand: PGPHand, playerHand: PGPHand) -> HandStatus {
         var lowStatus: HandStatus = .lose
         var highStatus: HandStatus = .lose
+
+        let dealerLowHandRank = self.getLowHandRank(cards: dealerHand.low)
+        let playerLowHandRank = self.getLowHandRank(cards: playerHand.low)
         
-        var dealerLowRanks: Set<CardRank> = []
-        for card in dealerHand.low {
-            dealerLowRanks.insert(card.rank)
-        }
-        
-        var playerLowRanks: Set<CardRank> = []
-        for card in playerHand.low {
-            playerLowRanks.insert(card.rank)
-        }
-        
-        if dealerLowRanks.intersection(playerLowRanks).count == dealerLowRanks.count {
-            lowStatus = .push
+        if dealerLowHandRank > playerLowHandRank {
+            lowStatus = .lose
+        } else if dealerLowHandRank < playerLowHandRank {
+            lowStatus = .win
         } else {
-            if let highLowHand = getHighestHairHand(hands: [dealerHand,playerHand]) {
-                if highLowHand.low == playerHand.low {
-                    lowStatus = .win
-                }
-            }
+            lowStatus = .push
         }
         
         let dealerHighHandRank = getHighHandRank(cards: dealerHand.high)
