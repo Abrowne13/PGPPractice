@@ -705,13 +705,15 @@ class PGPBoard {
                     if frequency == 7 {
                         hand.low.append(suitedCards.first!)
                         hand.low.append(suitedCards[1])
-                        hand.high = suitedCards.filter({!hand.low.contains($0)})
+                        let highCards = suitedCards.filter({!hand.low.contains($0)})
+                        hand.high = self.setFlushHighHand(cards: highCards)
                         return hand
                     } else if frequency == 6 {
                         if !pairs.isEmpty {
                             hand.low.append(cards.first(where: {$0.rank == pairs.first!})!)
                             hand.low.append(cards.first(where: {$0 != hand.low.first! && $0.rank == pairs.first})!)
-                            hand.high = suitedCards.filter({!hand.low.contains($0)})
+                            let highCards = suitedCards.filter({!hand.low.contains($0)})
+                            hand.high = self.setFlushHighHand(cards: highCards)
                             return hand
                         } else {
                             let unsuitedCards = cards.filter({!suitedCards.contains($0)})
@@ -720,7 +722,8 @@ class PGPBoard {
                             low.sort(by: >)
                             hand.low.append(low[0])
                             hand.low.append(low[1])
-                            hand.high = sortedCards.filter({!hand.low.contains($0)})
+                            let highCards = suitedCards.filter({!hand.low.contains($0)})
+                            hand.high = self.setFlushHighHand(cards: highCards)
                             return hand
                         }
                     } else if frequency == 5 {
@@ -728,13 +731,13 @@ class PGPBoard {
                             if !suitedCards.contains(where: {$0.rank == pairs.first!}) {
                                 hand.low.append(cards.first(where: {$0.rank == pairs.first!})!)
                                 hand.low.append(cards.first(where: {$0.rank == pairs.first! && $0 != hand.low.first!})!)
-                                hand.high = cards.filter({!hand.low.contains($0)})
+                                let highCards = suitedCards.filter({!hand.low.contains($0)})
+                                hand.high = self.setFlushHighHand(cards: highCards)
                                 return hand
                             } else {
                                 let unsuitedCards = cards.filter({!suitedCards.contains($0)})
                                 hand.low = unsuitedCards
                                 hand.high = suitedCards
-                                
                                 return hand
                             }
                         } else {
@@ -746,8 +749,9 @@ class PGPBoard {
                         }
                     }
                 } else if frequency == 4 && hasJoker {
-                    hand.high = suitedCards
-                    hand.high.append(cards.first(where: {$0.rank == .joker})!)
+                    var highCards = suitedCards
+                    highCards.append(cards.first(where: {$0.rank == .joker})!)
+                    hand.high = self.setFlushHighHand(cards: highCards)
                     hand.low = cards.filter({!hand.high.contains($0)})
                     return hand
                 }
@@ -1215,6 +1219,31 @@ class PGPBoard {
         }
         
         return highHandRank
+    }
+    
+    func setFlushHighHand(cards: [Card]) -> [Card] {
+        var sortedCards = cards.sorted(by: >)
+        if let joker = cards.first(where: { $0.rank == .joker }) {
+            let jokerOffset = cards.firstIndex(where: {$0.rank == .joker})! + 1
+            if cards[0].rank == .ace {
+                if cards[1].rank == .king {
+                    if cards[1].rank == .queen {
+                        if cards[1].rank == .jack {
+                            sortedCards.move(fromOffsets: IndexSet(integer: jokerOffset), toOffset: 4)
+                        } else {
+                            sortedCards.move(fromOffsets: IndexSet(integer: jokerOffset), toOffset: 3)
+                        }
+                    } else {
+                        sortedCards.move(fromOffsets: IndexSet(integer: jokerOffset), toOffset: 2)
+                    }
+                } else {
+                    sortedCards.move(fromOffsets: IndexSet(integer: jokerOffset), toOffset: 1)
+                }
+            } else {
+                sortedCards.move(fromOffsets: IndexSet(integer: jokerOffset), toOffset: 0)
+            }
+        }
+        return sortedCards
     }
 }
 
