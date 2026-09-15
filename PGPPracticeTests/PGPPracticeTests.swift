@@ -68,14 +68,14 @@ struct PGPPracticeTests {
                      Card(rank: .queen, suit: .hearts),
                      Card(rank: .three, suit: .spades),
                      Card(rank: .queen, suit: .diamonds),
-                     Card(rank: .nine, suit: .hearts),
+                     Card(rank: .ace, suit: .hearts),
                      Card(rank: .eight, suit: .clubs),
                      Card(rank: .two, suit: .spades)]
         
         let answerHand = PGPHand(low: [Card(rank: .two, suit: .hearts), Card(rank: .two, suit: .spades)],
                                  high: [Card(rank: .queen, suit: .hearts),
                                         Card(rank: .queen, suit: .diamonds),
-                                        Card(rank: .nine, suit: .hearts),
+                                        Card(rank: .ace, suit: .hearts),
                                         Card(rank: .eight, suit: .clubs),
                                         Card(rank: .three, suit: .spades)])
         let testHand = board.getHandFromCards(cards: cards)
@@ -407,10 +407,10 @@ struct PGPPracticeTests {
         
         //!! Also ordered inconsistently
         let answerHand = PGPHand(low: [Card(rank: .eight, suit: .spades), Card(rank: .eight, suit: .clubs)],
-                                 high: [Card(rank: .four, suit: .hearts),
-                                        Card(rank: .queen, suit: .hearts),
-                                        Card(rank: .six, suit: .hearts),
+                                 high: [Card(rank: .queen, suit: .hearts),
                                         Card(rank: .nine, suit: .hearts),
+                                        Card(rank: .six, suit: .hearts),
+                                        Card(rank: .four, suit: .hearts),
                                         Card(rank: .two, suit: .hearts)])
         let testHand = board.getHandFromCards(cards: cards)
         #expect(testHand.low == answerHand.low)
@@ -915,11 +915,11 @@ struct PGPPracticeTests {
                      Card(rank: .joker, suit: .any)]
         
         let answerHand = PGPHand(low: [Card(rank: .three, suit: .spades), Card(rank: .eight, suit: .clubs)],
-                                 high: [Card(rank: .queen, suit: .hearts),
+                                 high: [Card(rank: .joker, suit: .any),
+                                        Card(rank: .queen, suit: .hearts),
                                         Card(rank: .nine, suit: .hearts),
                                         Card(rank: .six, suit: .hearts),
-                                        Card(rank: .four, suit: .hearts),
-                                        Card(rank: .joker, suit: .any)])
+                                        Card(rank: .four, suit: .hearts)])
         let testHand = board.getHandFromCards(cards: cards)
         #expect(testHand.low == answerHand.low)
         #expect(testHand.high == answerHand.high)
@@ -1047,11 +1047,11 @@ struct PGPPracticeTests {
                      Card(rank: .joker, suit: .any)]
         
         let answerHand = PGPHand(low: [Card(rank: .three, suit: .spades), Card(rank: .three, suit: .clubs)],
-                                 high: [Card(rank: .nine, suit: .hearts),
+                                 high: [Card(rank: .joker, suit: .any),
+                                        Card(rank: .nine, suit: .hearts),
                                         Card(rank: .six, suit: .hearts),
                                         Card(rank: .four, suit: .hearts),
-                                        Card(rank: .three, suit: .hearts),
-                                        Card(rank: .joker, suit: .any)])
+                                        Card(rank: .three, suit: .hearts)])
         let testHand = board.getHandFromCards(cards: cards)
         #expect(testHand.low == answerHand.low)
         #expect(testHand.high == answerHand.high)
