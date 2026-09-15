@@ -506,7 +506,8 @@ class PGPBoard {
                         let lowPair = cards.filter({$0.rank == lowRank})
                         hand.low.append(lowPair[0])
                         hand.low.append(lowPair[1])
-                        hand.high = cards.filter({!hand.low.contains($0)}).sorted(by: >)
+                        hand.high = highPair
+                        hand.high.append(contentsOf: cards.filter({!hand.low.contains($0) && $0.rank != highRank}).sorted(by: >))
                         return hand
                     } else if highRank >= CardRank.nine {
                         if let qualCard = cards.first(where:{$0.rank == CardRank.ace}) {
