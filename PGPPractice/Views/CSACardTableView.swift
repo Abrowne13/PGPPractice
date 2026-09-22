@@ -10,11 +10,7 @@ import SwiftUI
 struct CSACardTableView: View {
     @ObservedObject var viewModel = CSACardTableViewModel()
     @State var isShowingAnswers = false
-    @State private var showingRoundInterstital = true
     
-    init() {
-        _showingRoundInterstital = State(wrappedValue: viewModel.showingRoundInterstitial)
-    }
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -69,6 +65,8 @@ struct CSACardTableView: View {
                     Button("Next") {
                         viewModel.next()
                     }
+                } else {
+                    Spacer()
                 }
             }
         }

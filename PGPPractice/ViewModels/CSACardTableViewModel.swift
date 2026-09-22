@@ -16,7 +16,7 @@ class CSACardTableViewModel: ObservableObject {
     var dealerHand: PGPHand = PGPHand()
     var playerCards: [Card] = []
     var showAnswerButton = false
-    var showNextButton = false
+    @Published var showNextButton = false
     let board = PGPBoard()
     private var index = -1
     
@@ -99,6 +99,7 @@ class CSACardTableViewModel: ObservableObject {
             playerHandSeven = CardImage(card: playerCards[6])
         } else {
             print("Deck empty")
+            showNextButton = false
         }
         
         
