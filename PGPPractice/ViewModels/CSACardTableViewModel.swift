@@ -19,6 +19,7 @@ class CSACardTableViewModel: ObservableObject {
     @Published var showNextButton = false
     let board = PGPBoard()
     private var index = -1
+    private var roundCount = 0
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -58,6 +59,7 @@ class CSACardTableViewModel: ObservableObject {
     func startRound() {
         showAnswerButton = false
         showNextButton = true
+        roundCount = 0
         
         boardBuilder.resetCSADeck()
         
@@ -86,10 +88,11 @@ class CSACardTableViewModel: ObservableObject {
     func next() {
         
         showAnswerButton = true
+        roundCount += 1
 
         playerCards = boardBuilder.getCSAHand()
         
-        if !playerCards.isEmpty {
+        if roundCount <= 6 {
             playerHandOne = CardImage(card: playerCards[0])
             playerHandTwo = CardImage(card: playerCards[1])
             playerHandThree = CardImage(card: playerCards[2])
@@ -97,12 +100,12 @@ class CSACardTableViewModel: ObservableObject {
             playerHandFive = CardImage(card: playerCards[4])
             playerHandSix = CardImage(card: playerCards[5])
             playerHandSeven = CardImage(card: playerCards[6])
-        } else {
+        }
+        
+        if roundCount == 6 {
             print("Deck empty")
             showNextButton = false
         }
-        
-        
     }
     
     func answer() {
